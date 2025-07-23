@@ -1,6 +1,7 @@
 package com.platzi.market.persistence.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,9 +22,6 @@ public class Compra {
     @Column(name = "id_compra")
     private Integer idCompra;
 
-    @JoinColumn(name = "id_cliente")
-    private String cliente;
-
     private LocalDateTime fecha;
 
     @Column(name = "medio_pago")
@@ -30,6 +30,13 @@ public class Compra {
     private String comentario;
 
     private String estado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
+    private Cliente cliente;
+
+    @OneToMany(mappedBy = "compra")
+    List<ComprasProducto> productos;
 
     public Integer getIdCompra() {
         return idCompra;
