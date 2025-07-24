@@ -3,7 +3,6 @@ package com.platzi.market.persistence;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.platzi.market.domain.Product;
@@ -34,20 +33,19 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public Optional<List<Product>> getByCategory(int categoryId) {
-        List<Producto> productos = (List<Producto>) productoCrud.findByIdCategoriaOrderByNombreAsc(categoryId);
+        List<Producto> productos = productoCrud.findByIdCategoriaOrderByNombreAsc(categoryId);
         return Optional.of(mapper.toProducts(productos));
     }
 
     @Override
     public Optional<List<Product>> getScarseProducts(int quantity) {
-        Optional<List<Producto>> productos = (Optional<List<Producto>>) productoCrud
-                .findByCantidadStockLessThanAndEstado(quantity, true);
-        return productos.map(p -> mapper.toProducts(p));
+        Optional<List<Producto>> productos = productoCrud.findByCantidadStockLessThanAndEstado(quantity, true);
+        return productos.map(mapper::toProducts);
     }
 
     @Override
     public Optional<Product> getProduct(int productId) {
-        return productoCrud.findById(productId).map(p -> mapper.toProduct(p));
+        return productoCrud.findById(productId).map(mapper::toProduct);
     }
 
     @Override

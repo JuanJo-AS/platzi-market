@@ -1,28 +1,28 @@
 package com.platzi.market.domain;
 
 public class Product {
-    private int productId;
-    private String nombre;
+    private Integer productId;
+    private String name;
     private int categoryId;
     private double price;
     private int stock;
     private boolean active;
     private Category category;
 
-    public int getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getCategoryId() {
