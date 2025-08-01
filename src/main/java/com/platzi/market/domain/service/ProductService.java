@@ -10,6 +10,7 @@ import com.platzi.market.domain.repository.ProductRepository;
 
 @Service
 public class ProductService {
+
     private ProductRepository productRepository;
 
     public ProductService(ProductRepository productRepository) {

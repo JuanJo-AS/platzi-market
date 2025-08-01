@@ -10,18 +10,18 @@ import lombok.Setter;
 @Setter
 public class Purchase {
 
-    private int purchaseId;
+    private Integer purchaseId;
 
     private String clientId;
 
     private LocalDateTime date;
 
-    private String paymentMethhod;
+    private String paymentMethod;
 
     private String comment;
 
     private String state;
 
-    private List<PurchaseItem> item;
+    private List<PurchaseItem> items;
 
 }
